@@ -1,5 +1,7 @@
 require "comics/version"
+require 'nokogiri'
+require 'open-uri'
 
-module Comics
-  # Your code goes here...
+["scraper"].each do |inc|
+  require File.join(File.dirname(__FILE__), "comics", inc)
 end
