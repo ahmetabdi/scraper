@@ -1,10 +1,10 @@
 require 'rspec'
 require 'spec_helper'
 
-describe Comics::Scraper do
+describe Scraper::Comics do
   describe "Scraping the site" do
     before(:each) do
-      @comics = Comics::Scraper.all(1,1)
+      @comics = Scraper::Comics.all(1,1)
     end
 
     it "should return all comics for first five pages" do
@@ -14,7 +14,7 @@ describe Comics::Scraper do
 
   describe "Scraping a comic" do
     before(:all) do
-      @comic = Comics::Scraper.all(1,1).first
+      @comic = Scraper::Comics.all(1,1).first
     end
 
     it "should always return a title" do

@@ -14,7 +14,7 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
-require_relative '../lib/comics.rb'
+require_relative '../lib/scraper.rb'
 
 RSpec.configure do |config|
 # The settings below are suggested to provide a good initial experience

@@ -1,5 +1,5 @@
-module Comics
-  class Scraper
+module Scraper
+  class Comics
 
     def self.all(start_page = 1, last_page = 5)
       results = []
@@ -48,6 +48,10 @@ module Comics
       if comic.at_xpath('//*[@id="dle-content"]/div/article/div[2]/p/i')
         comic.at_xpath('//*[@id="dle-content"]/div/article/div[2]/p/i').content.gsub('Tags: ', '').split(',').collect(&:strip)
       end
+    end
+
+    def self.last_page
+      Nokogiri::HTML(open('http://www.newcomic.org/')).search('#dle-content > div.basenavi > span.navigation > a:nth-child(12)').first.children[0].to_s.to_i
     end
 
   end
