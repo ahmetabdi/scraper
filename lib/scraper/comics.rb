@@ -12,6 +12,7 @@ module Scraper
           url = block.search('a').map {|a| a['href']}.first
 
           result.merge!({
+            :type => :comic,
             :title => block.at_css('.story_h').content,
             :url => url })
 

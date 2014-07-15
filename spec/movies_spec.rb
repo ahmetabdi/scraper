@@ -2,36 +2,37 @@ require 'rspec'
 require 'spec_helper'
 
 describe Scraper::Movies do
+
   describe "Scraping the site" do
     before(:each) do
-      @movies = Scraper::Movies.all#(1,1)
+      @movies = Scraper::Movies.all(1,1)
     end
 
-    it "should return all movies for first five pages" do
-      #expect(@movies.count).to eq(15)
+    it "should return all 10 movies for first page" do
+      expect(@movies.count).to eq(10)
     end
   end
 
-  # describe "Scraping a comic" do
-  #   before(:all) do
-  #     @comic = Scraper::movies.all(1,1).first
-  #   end
+  describe "Scraping a movie" do
+    before(:all) do
+      @movie = Scraper::Movies.all(1,1).first
+    end
 
-  #   it "should always return a title" do
-  #     expect(@comic[:title]).not_to be_empty
-  #   end
+    it "should always return a type" do
+      expect(@movie[:type]).to be(:movie)
+    end
 
-  #   it "should always return a url" do
-  #     expect(@comic[:url]).not_to be_empty
-  #   end
+    it "should always return a title" do
+      expect(@movie[:title]).not_to be_empty
+    end
 
-  #   it "should always return a main_image" do
-  #     expect(@comic[:main_image]).not_to be_empty
-  #   end
+    it "should always return a url" do
+      expect(@movie[:url]).not_to be_empty
+    end
 
-  #   it "should always return a download_link" do
-  #     expect(@comic[:download_link]).not_to be_empty
-  #   end
+    it "should always return a description" do
+      expect(@movie[:description]).not_to be_empty
+    end
+  end
 
-  # end
 end
