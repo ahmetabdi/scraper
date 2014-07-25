@@ -1,12 +1,10 @@
-w# Comics
-
-TODO: Write a gem description
+# Scraper
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'comics'
+    gem 'scraper'
 
 And then execute:
 
@@ -14,16 +12,8 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install comics
+    $ gem install scraper
 
 ## Usage
 
 TODO: Write usage instructions here
-
-## Contributing
-
-1. Fork it ( https://github.com/[my-github-username]/comics/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request

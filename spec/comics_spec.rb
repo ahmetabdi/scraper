@@ -18,23 +18,23 @@ describe Scraper::Comics do
     end
 
     it "should always return a type" do
-      expect(@comic[:type]).to be(:comic)
+      expect(@comic.type).to be(:comic)
     end
 
     it "should always return a title" do
-      expect(@comic[:title]).not_to be_empty
+      expect(@comic.title).not_to be_empty
     end
 
     it "should always return a url" do
-      expect(@comic[:url]).not_to be_empty
+      expect(@comic.url).not_to be_empty
     end
 
     it "should always return a main_image" do
-      expect(@comic[:main_image]).not_to be_empty
+      expect(@comic.main_image).not_to be_empty
     end
 
     it "should always return a download_link" do
-      expect(@comic[:download_link]).not_to be_empty
+      expect(@comic.download_link).not_to be_empty
     end
   end
 

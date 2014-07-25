@@ -7,22 +7,20 @@ module Scraper
         doc = Nokogiri::HTML(open("http://www.newcomic.org/page/#{i}/"))
 
         doc.css('.story_short').each do |block|
-          result = Hash.new
+          result = OpenStruct.new
 
           url = block.search('a').map {|a| a['href']}.first
 
-          result.merge!({
-            :type => :comic,
-            :title => block.at_css('.story_h').content,
-            :url => url })
+          result.type = :comic
+          result.title = block.at_css('.story_h').content
+          result.url = url
 
           comic = Nokogiri::HTML(open(url))
 
-          result.merge!({
-            :main_image => main_image(comic),
-            :other_images => other_images(comic),
-            :download_link => download_link(comic),
-            :tags => tags(comic) })
+          result.main_image = main_image(comic)
+          result.other_images = other_images(comic)
+          result.download_link = download_link(comic)
+          result.tags = tags(comic)
 
           results << result
         end

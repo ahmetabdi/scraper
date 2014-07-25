@@ -6,14 +6,23 @@ module Scraper
       doc = Nokogiri::HTML(open('http://www.wrzko.eu/movies/'))
 
       doc.css('.category_block').each do |block|
-        result = Hash.new
+        result = OpenStruct.new
 
-        result.merge!({
-          :type => :movie,
-          :title => block.at_css('.maintitle_base').content.strip,
-          :url => block.at_css('.maintitle_base').search('a').map {|a| a['href']}.first,
-          :description => block.at_css('.description').content
-        })
+        url = block.at_css('.maintitle_base').search('a').map {|a| a['href']}.first
+
+        result.type = :movie
+        result.title = block.at_css('.maintitle_base').content.strip
+        result.description = block.at_css('.description').content
+        result.url = url
+
+        movie = Nokogiri::HTML(open(url))
+
+        # [0] NFO [1] Main Image [Rest] Other Images
+        images = movie.at_css('.image').search('a').map {|a| a['href']}.collect! {|x| x if %r{\Ahttps?:\/\/.+\.(?:jpe?g|png)\z}.match(x) }.compact.inspect
+
+        # movie.css('.postarea p').each do |p|
+          # raise p.inspect
+        # end
 
         results << result
       end
