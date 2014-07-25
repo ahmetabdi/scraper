@@ -10,7 +10,6 @@ module Scraper
 
         url = block.at_css('.maintitle_base').search('a').map {|a| a['href']}.first
 
-        result.type = :movie
         result.title = block.at_css('.maintitle_base').content.strip
         result.description = block.at_css('.description').content
         result.url = url

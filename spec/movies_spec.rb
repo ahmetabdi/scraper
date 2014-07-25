@@ -18,20 +18,19 @@ describe Scraper::Movies do
       @movie = Scraper::Movies.all(1,1).first
     end
 
-    it "should always return a type" do
-      expect(@movie.type).to be(:movie)
-    end
-
     it "should always return a title" do
+      puts @movie.title
       expect(@movie.title).not_to be_empty
     end
 
-    it "should always return a url" do
-      expect(@movie.url).not_to be_empty
+    it "should always return a description" do
+      puts @movie.description
+      expect(@movie.description).not_to be_empty
     end
 
-    it "should always return a description" do
-      expect(@movie.description).not_to be_empty
+    it "should always return a url" do
+      puts @movie.url
+      expect(@movie.url).not_to be_empty
     end
   end
 

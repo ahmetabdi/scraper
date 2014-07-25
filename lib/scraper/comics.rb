@@ -11,7 +11,6 @@ module Scraper
 
           url = block.search('a').map {|a| a['href']}.first
 
-          result.type = :comic
           result.title = block.at_css('.story_h').content
           result.url = url
 
