@@ -4,12 +4,12 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'scraper/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "scraper"
+  spec.name          = "ascraper"
   spec.version       = Scraper::VERSION
   spec.authors       = ["Ahmet"]
   spec.email         = ["ahmet@kyan.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{A Scraper.}
+  spec.description   = %q{A Scraper.}
   spec.homepage      = ""
   spec.license       = "MIT"
 

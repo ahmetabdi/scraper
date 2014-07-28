@@ -4,7 +4,7 @@
 
 Add this line to your application's Gemfile:
 
-    gem 'scraper'
+    gem 'ascraper'
 
 And then execute:
 
@@ -12,8 +12,8 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install scraper
+    $ gem install ascraper
 
 ## Usage
 
-TODO: Write usage instructions here
+Do not use
