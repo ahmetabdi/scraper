@@ -14,14 +14,30 @@ module Scraper
         result.description = block.at_css('.description').content
         result.url = url
 
+        result.main_image = block.at_css('.image').search('img')[0]['src']
+        result.imdb = block.at_css('.image').search('a')[0]['href']
+
+        result.genres = []
+
+        block.search('.genre').each do |genre|
+          result.genres << genre.content
+        end
+
+        result.tags = []
+
+        block.search('.ipsTag').each do |tag|
+          result.tags << tag.content
+        end
+
         movie = Nokogiri::HTML(open(url))
 
-        # [0] NFO [1] Main Image [Rest] Other Images
-        images = movie.at_css('.image').search('a').map {|a| a['href']}.collect! {|x| x if %r{\Ahttps?:\/\/.+\.(?:jpe?g|png)\z}.match(x) }.compact.inspect
+        result.images = movie.at_css('.image').search('a').map {|a| a['href']}.collect! {|x| x if %r{\Ahttps?:\/\/.+\.(?:jpe?g|png)\z}.match(x) }.compact.inspect
 
-        # movie.css('.postarea p').each do |p|
-          # raise p.inspect
-        # end
+        result.download_links = []
+
+        movie.css('.postarea p').each do |p|
+          result.download_links << p
+        end
 
         results << result
       end

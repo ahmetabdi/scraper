@@ -32,6 +32,30 @@ describe Scraper::Movies do
       puts @movie.url
       expect(@movie.url).not_to be_empty
     end
+
+    it "should return genres" do
+      puts @movie.genres
+    end
+
+    it "should return tags" do
+      puts @movie.tags
+    end
+
+    it "should return a main image" do
+      puts @movie.main_image
+    end
+
+    it "should return images" do
+      puts @movie.images
+    end
+
+    it "should return an imdb url" do
+      puts @movie.imdb
+    end
+
+    it "should return download links" do
+      puts @movie.download_links
+    end
   end
 
 end
