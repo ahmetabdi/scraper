@@ -36,7 +36,7 @@ module Scraper
         result.download_links = []
 
         movie.css('.postarea p').each do |p|
-          result.download_links << p
+          result.download_links << p.content
         end
 
         results << result
