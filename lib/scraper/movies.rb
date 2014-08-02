@@ -31,7 +31,11 @@ module Scraper
 
         movie = Nokogiri::HTML(open(url))
 
-        result.images = movie.at_css('.image').search('a').map {|a| a['href']}.collect! {|x| x if %r{\Ahttps?:\/\/.+\.(?:jpe?g|png)\z}.match(x) }.compact.inspect
+        result.images = []
+
+        movie.at_css('.image').search('a').map {|a| a['href']}.collect! {|x| x if %r{\Ahttps?:\/\/.+\.(?:jpe?g|png)\z}.match(x) }.compact.each do |image|
+          result.images << image
+        end
 
         result.download_links = []
 
