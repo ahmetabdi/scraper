@@ -32,6 +32,11 @@ describe Scraper::Comics do
       expect(@comic.main_image).not_to be_empty
     end
 
+    it "should return a description" do
+      puts @comic.description
+      expect(@comic.description).not_to be_empty
+    end
+
     it "should always return a download_link" do
       puts @comic.download_link
       expect(@comic.download_link).not_to be_empty

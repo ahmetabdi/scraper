@@ -20,12 +20,17 @@ module Scraper
           result.other_images = other_images(comic)
           result.download_link = download_link(comic)
           result.tags = tags(comic)
+          result.description = description(comic)
 
           results << result
         end
 
       end
       results
+    end
+
+    def self.description(comic)
+      comic.at_css('.story_c').content.gsub(/\s+/, " ").strip
     end
 
     def self.main_image(comic)
